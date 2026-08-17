@@ -1,0 +1,3552 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <meta name="theme-color" content="#962626">
+
+  <!-- PWA / iPhone -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CEO Pulse">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+  <style>
+
+    :root {
+      --navy:#141924;
+      --navy-light:#1B2230;
+      --navy-mid:#242D3D;
+
+      --red:#962626;
+      --red-light:#C55A5A;
+
+      --white:#FFFFFF;
+      --off-white:#E6EBED;
+
+      --gray:#7D8088;
+      --gray-light:#AEB6C4;
+
+      --green:#62B985;
+      --yellow:#E1AD5A;
+
+      --blue:#4C82A8;
+
+      --border:#2B3444;
+    }
+
+
+    * {
+      box-sizing:border-box;
+    }
+
+
+    body {
+      margin:0;
+
+      min-height:100vh;
+
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(150,38,38,.12),
+          transparent 28%
+        ),
+        var(--navy);
+
+      color:var(--white);
+
+      font-family:
+        "Source Sans 3",
+        Arial,
+        sans-serif;
+    }
+
+
+    .app {
+      width:100%;
+      max-width:540px;
+
+      margin:0 auto;
+
+      padding:
+        max(24px,env(safe-area-inset-top))
+        18px
+        110px;
+    }
+
+
+    /* HEADER */
+
+    .header {
+      display:flex;
+
+      justify-content:space-between;
+      align-items:flex-start;
+
+      gap:20px;
+
+      margin-bottom:34px;
+    }
+
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:11px;
+    }
+
+
+    .brand-mark {
+      width:38px;
+      height:38px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      border-radius:50%;
+
+      border:2px solid var(--red);
+
+      font-family:"Oswald",sans-serif;
+      font-weight:700;
+      font-size:13px;
+
+      letter-spacing:1px;
+    }
+
+
+    .brand-text {
+      font-family:"Oswald",sans-serif;
+
+      font-size:17px;
+      font-weight:700;
+
+      line-height:1;
+
+      letter-spacing:1.2px;
+
+      text-transform:uppercase;
+    }
+
+
+    .brand-sub {
+      display:block;
+
+      margin-top:4px;
+
+      font-family:"Source Sans 3",sans-serif;
+
+      font-size:9px;
+      font-weight:600;
+
+      color:var(--gray-light);
+
+      letter-spacing:2px;
+    }
+
+
+    .header-date {
+      font-family:"Oswald",sans-serif;
+
+      font-size:11px;
+      font-weight:600;
+
+      line-height:1.45;
+
+      letter-spacing:1.4px;
+
+      text-transform:uppercase;
+      text-align:right;
+
+      color:var(--gray-light);
+    }
+
+
+    /* TYPOGRAPHY */
+
+    h1 {
+      margin:0 0 8px;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:36px;
+      line-height:1;
+
+      font-weight:700;
+
+      text-transform:uppercase;
+    }
+
+
+    .intro {
+      margin:0 0 28px;
+
+      max-width:430px;
+
+      color:var(--gray-light);
+
+      font-size:15px;
+      line-height:1.45;
+    }
+
+
+    .section {
+      margin:23px 0;
+    }
+
+
+    .section-title {
+      margin-bottom:9px;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:12px;
+      font-weight:600;
+
+      letter-spacing:1.8px;
+
+      color:#C5CBD4;
+
+      text-transform:uppercase;
+    }
+
+
+    /* CARDS */
+
+    .card {
+      position:relative;
+
+      padding:18px;
+
+      margin-bottom:10px;
+
+      border:1px solid var(--border);
+
+      border-radius:16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.025),
+          rgba(255,255,255,0)
+        ),
+        var(--navy-light);
+
+      box-shadow:
+        0 12px 32px rgba(0,0,0,.14);
+    }
+
+
+    .card-head {
+      display:flex;
+
+      justify-content:space-between;
+      align-items:flex-start;
+
+      gap:15px;
+    }
+
+
+    .metric-name {
+      color:#B7BFCA;
+
+      font-size:13px;
+    }
+
+
+    .metric-value {
+      margin-top:3px;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:32px;
+      font-weight:600;
+
+      line-height:1.15;
+    }
+
+
+    .metric-detail {
+      margin-top:6px;
+
+      color:#929CAA;
+
+      font-size:12px;
+      line-height:1.4;
+    }
+
+
+    /* STATUS */
+
+    .pill {
+      display:inline-block;
+
+      padding:5px 8px;
+
+      border-radius:999px;
+
+      background:#293345;
+
+      color:#CBD2DC;
+
+      font-size:10px;
+      font-weight:700;
+
+      white-space:nowrap;
+
+      letter-spacing:.4px;
+    }
+
+
+    .pill.on-track,
+    .pill.current,
+    .pill.updated,
+    .pill.up {
+      background:rgba(98,185,133,.15);
+
+      color:#8FD4A9;
+    }
+
+
+    .pill.watch,
+    .pill.partial,
+    .pill.awaiting,
+    .pill.flat {
+      background:rgba(225,173,90,.15);
+
+      color:#F0C77E;
+    }
+
+
+    .pill.attention,
+    .pill.off-track,
+    .pill.down,
+    .pill.at-risk {
+      background:rgba(150,38,38,.30);
+
+      color:#FFB5B5;
+    }
+
+
+    .awaiting-value {
+      display:block;
+
+      margin-top:7px;
+
+      font-size:15px;
+      font-weight:600;
+
+      color:var(--yellow);
+    }
+
+
+    /* SUMMARY */
+
+    .summary-card {
+      cursor:pointer;
+
+      transition:
+        transform .15s ease,
+        border-color .15s ease;
+    }
+
+
+    .summary-card:active {
+      transform:scale(.985);
+    }
+
+
+    .summary-footer {
+      display:flex;
+
+      justify-content:space-between;
+      align-items:center;
+
+      margin-top:15px;
+      padding-top:12px;
+
+      border-top:1px solid var(--border);
+
+      color:#8E98A6;
+
+      font-size:11px;
+    }
+
+
+    .summary-link {
+      color:#C8CFD8;
+
+      font-weight:600;
+    }
+
+
+    /* ATTENTION */
+
+    .attention-card {
+      border-left:4px solid var(--red);
+
+      cursor:pointer;
+    }
+
+
+    .attention-card:active {
+      transform:scale(.985);
+    }
+
+
+    .attention-number {
+      font-family:"Oswald",sans-serif;
+
+      font-size:42px;
+      font-weight:700;
+
+      line-height:1;
+    }
+
+
+    .attention-copy {
+      margin-top:5px;
+
+      color:#D0D5DC;
+
+      font-size:14px;
+    }
+
+
+    .attention-action {
+      display:flex;
+
+      justify-content:space-between;
+      align-items:center;
+
+      margin-top:14px;
+      padding-top:11px;
+
+      border-top:1px solid rgba(255,255,255,.08);
+
+      font-size:11px;
+
+      color:#D5D9DF;
+    }
+
+
+    /* TEAM PROGRESS */
+
+    .progress-track {
+      width:100%;
+      height:5px;
+
+      margin-top:13px;
+
+      overflow:hidden;
+
+      border-radius:999px;
+
+      background:#303949;
+    }
+
+
+    .progress-bar {
+      height:100%;
+
+      border-radius:999px;
+
+      background:var(--red);
+    }
+
+
+    /* TEAM RECAP */
+
+    .recap-card {
+      padding:0;
+
+      overflow:hidden;
+    }
+
+
+    .recap-summary {
+      padding:18px;
+
+      cursor:pointer;
+    }
+
+
+    .recap-name {
+      margin:0;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:24px;
+      font-weight:600;
+
+      text-transform:uppercase;
+    }
+
+
+    .recap-area {
+      margin-top:3px;
+
+      color:#929CAA;
+
+      font-size:12px;
+    }
+
+
+    .recap-key {
+      margin-top:16px;
+    }
+
+
+    .recap-label {
+      margin-bottom:5px;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:10px;
+      font-weight:600;
+
+      letter-spacing:1.4px;
+
+      color:#9BA5B4;
+
+      text-transform:uppercase;
+    }
+
+
+    .recap-text {
+      color:#E1E5EA;
+
+      font-size:14px;
+      line-height:1.5;
+
+      white-space:pre-line;
+    }
+
+
+    .recap-watch {
+      margin-top:13px;
+    }
+
+
+    .needs-jon-preview {
+      margin-top:15px;
+
+      padding:11px 12px;
+
+      border-radius:10px;
+
+      background:rgba(150,38,38,.13);
+
+      border:
+        1px solid rgba(150,38,38,.18);
+    }
+
+
+    .needs-jon-preview .recap-label {
+      color:#E69393;
+    }
+
+
+    .needs-jon-preview .recap-text {
+      color:#FFD0D0;
+    }
+
+
+    .expand-row {
+      display:flex;
+
+      justify-content:space-between;
+      align-items:center;
+
+      margin-top:16px;
+      padding-top:12px;
+
+      border-top:1px solid var(--border);
+
+      color:#AAB3BF;
+
+      font-size:11px;
+      font-weight:600;
+    }
+
+
+    .expand-arrow {
+      transition:transform .2s ease;
+    }
+
+
+    .recap-card.open .expand-arrow {
+      transform:rotate(180deg);
+    }
+
+
+    .recap-full {
+      display:none;
+
+      padding:0 18px 18px;
+
+      border-top:1px solid var(--border);
+    }
+
+
+    .recap-card.open .recap-full {
+      display:block;
+    }
+
+
+    .recap-row {
+      margin-top:17px;
+    }
+
+
+    .decision-anchor {
+      scroll-margin-top:25px;
+    }
+
+
+    .decision-header {
+      padding:14px 15px;
+
+      margin-bottom:10px;
+
+      border-radius:12px;
+
+      background:rgba(150,38,38,.11);
+
+      border:
+        1px solid rgba(150,38,38,.22);
+    }
+
+
+    .decision-header strong {
+      display:block;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:16px;
+
+      text-transform:uppercase;
+    }
+
+
+    .decision-header span {
+      display:block;
+
+      margin-top:3px;
+
+      color:#B9C0CA;
+
+      font-size:12px;
+    }
+
+
+    /* HISTORY */
+
+    .chart-card {
+      padding:18px 16px 15px;
+    }
+
+
+    .chart-top {
+      display:flex;
+
+      justify-content:space-between;
+      align-items:flex-start;
+
+      gap:15px;
+    }
+
+
+    .chart-title {
+      color:#B7BFCA;
+
+      font-size:13px;
+    }
+
+
+    .chart-current {
+      margin-top:2px;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:30px;
+      font-weight:600;
+
+      line-height:1;
+    }
+
+
+    .trend-copy {
+      margin-top:6px;
+
+      font-size:12px;
+
+      color:#9AA4B1;
+    }
+
+
+    .trend-up {
+      color:#8FD4A9;
+    }
+
+
+    .trend-down {
+      color:#F09898;
+    }
+
+
+    .chart-wrap {
+      width:100%;
+
+      margin-top:18px;
+
+      overflow:hidden;
+    }
+
+
+    .chart-svg {
+      display:block;
+
+      width:100%;
+      height:auto;
+    }
+
+
+    .chart-axis {
+      display:flex;
+
+      justify-content:space-between;
+
+      margin-top:5px;
+
+      color:#768190;
+
+      font-size:9px;
+    }
+
+
+    .legend {
+      display:flex;
+
+      gap:15px;
+
+      margin-top:11px;
+
+      color:#9AA4B2;
+
+      font-size:10px;
+    }
+
+
+    .legend-item {
+      display:flex;
+
+      align-items:center;
+
+      gap:6px;
+    }
+
+
+    .legend-dot {
+      width:7px;
+      height:7px;
+
+      border-radius:50%;
+    }
+
+
+    .legend-red {
+      background:var(--red-light);
+    }
+
+
+    .legend-blue {
+      background:var(--blue);
+    }
+
+
+    .history-empty {
+      padding:20px 18px;
+
+      color:#929CAA;
+
+      font-size:13px;
+      line-height:1.5;
+    }
+
+
+    .history-empty strong {
+      display:block;
+
+      margin-bottom:5px;
+
+      color:#D6DBE1;
+
+      font-family:"Oswald",sans-serif;
+
+      font-size:17px;
+
+      text-transform:uppercase;
+    }
+
+
+    /* NAV */
+
+    .bottom-nav {
+      position:fixed;
+
+      z-index:50;
+
+      left:50%;
+      bottom:0;
+
+      transform:translateX(-50%);
+
+      width:min(540px,100%);
+
+      display:grid;
+
+      grid-template-columns:repeat(5,1fr);
+
+      padding:
+        8px
+        5px
+        max(9px,env(safe-area-inset-bottom));
+
+      border-top:1px solid var(--border);
+
+      background:rgba(20,25,36,.96);
+
+      backdrop-filter:blur(15px);
+
+      -webkit-backdrop-filter:blur(15px);
+    }
+
+
+    .nav-button {
+      padding:7px 1px;
+
+      border:0;
+
+      background:transparent;
+
+      color:#808A99;
+
+      font-family:"Source Sans 3",sans-serif;
+
+      font-size:9px;
+      font-weight:600;
+
+      cursor:pointer;
+    }
+
+
+    .nav-button.active {
+      color:var(--white);
+    }
+
+
+    .nav-icon {
+      width:5px;
+      height:5px;
+
+      margin:0 auto 6px;
+
+      border-radius:50%;
+
+      background:#586273;
+    }
+
+
+    .nav-button.active .nav-icon {
+      background:var(--red);
+    }
+
+
+    /* LOADING */
+
+    .loading {
+      padding:90px 0;
+
+      text-align:center;
+
+      color:var(--gray-light);
+
+      font-size:14px;
+    }
+
+
+    .loading-line {
+      width:50px;
+      height:3px;
+
+      margin:16px auto;
+
+      border-radius:3px;
+
+      background:var(--red);
+
+      animation:pulse 1.2s infinite ease-in-out;
+    }
+
+
+    @keyframes pulse {
+
+      0%,100% {
+        opacity:.3;
+
+        transform:scaleX(.7);
+      }
+
+      50% {
+        opacity:1;
+
+        transform:scaleX(1);
+      }
+    }
+
+
+    .hidden {
+      display:none !important;
+    }
+
+
+    .last-refreshed {
+      margin-top:24px;
+
+      text-align:center;
+
+      color:#717C8C;
+
+      font-size:10px;
+    }
+
+
+    .error {
+      margin-top:50px;
+
+      padding:20px;
+
+      border:
+        1px solid rgba(150,38,38,.5);
+
+      border-radius:12px;
+
+      color:#FFC3C3;
+
+      background:rgba(150,38,38,.10);
+
+      font-size:14px;
+    }
+
+
+    @media(min-width:700px) {
+
+      .app {
+        padding-top:40px;
+      }
+
+      h1 {
+        font-size:42px;
+      }
+    }
+
+
+    /* PWA mobile layout */
+    @media(max-width:699px) {
+      html, body { min-height:100%; }
+      body { min-height:100dvh; }
+      .app {
+        max-width:none;
+        margin:0;
+        padding:max(18px,env(safe-area-inset-top)) 14px calc(92px + env(safe-area-inset-bottom));
+      }
+      .header { margin-bottom:26px; gap:12px; }
+      h1 { font-size:38px; }
+      .intro { max-width:none; font-size:16px; }
+      .card { border-radius:16px; }
+      .bottom-nav { padding-bottom:max(8px,env(safe-area-inset-bottom)); }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+  <header class="header">
+
+    <div class="brand">
+
+      <div class="brand-mark">
+        FRD
+      </div>
+
+      <div class="brand-text">
+
+        Front Row Dads
+
+        <span class="brand-sub">
+          CEO Pulse
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="header-date"
+      id="headerDate">
+
+      CEO PULSE
+
+    </div>
+
+  </header>
+
+
+  <div
+    id="loading"
+    class="loading">
+
+    <div>
+      Loading CEO Pulse
+    </div>
+
+    <div class="loading-line"></div>
+
+  </div>
+
+
+  <main id="home" class="hidden"></main>
+
+  <main id="membership" class="hidden"></main>
+
+  <main id="financial" class="hidden"></main>
+
+  <main id="team" class="hidden"></main>
+
+  <main id="history" class="hidden"></main>
+
+</div>
+
+
+<nav class="bottom-nav">
+
+  <button
+    class="nav-button active"
+    data-view="home">
+
+    <div class="nav-icon"></div>
+
+    Pulse
+
+  </button>
+
+
+  <button
+    class="nav-button"
+    data-view="membership">
+
+    <div class="nav-icon"></div>
+
+    Membership
+
+  </button>
+
+
+  <button
+    class="nav-button"
+    data-view="financial">
+
+    <div class="nav-icon"></div>
+
+    Financial
+
+  </button>
+
+
+  <button
+    class="nav-button"
+    data-view="team">
+
+    <div class="nav-icon"></div>
+
+    Team
+
+  </button>
+
+
+  <button
+    class="nav-button"
+    data-view="history">
+
+    <div class="nav-icon"></div>
+
+    History
+
+  </button>
+
+</nav>
+
+
+<script>
+
+/* ================================
+   DATA
+================================ */
+
+let DATA = {
+  current:[],
+  team:[],
+  history:[]
+};
+
+
+/* ================================
+   HELPERS
+================================ */
+
+function bySection(section) {
+
+  return DATA.current.filter(
+    item => item.Section === section
+  );
+
+}
+
+
+function findMetric(key) {
+
+  return DATA.current.find(
+    item => item["Metric Key"] === key
+  );
+
+}
+
+
+function hasValue(metric) {
+
+  return (
+    metric &&
+    metric.Value !== undefined &&
+    metric.Value !== null &&
+    String(metric.Value).trim() !== ""
+  );
+
+}
+
+
+function escapeHtml(value) {
+
+  if (
+    value === undefined ||
+    value === null
+  ) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+function normalizeStatus(status) {
+
+  if (!status) {
+    return "current";
+  }
+
+  return String(status)
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g,"-");
+
+}
+
+
+function statusLabel(metric) {
+
+  if (!hasValue(metric)) {
+
+    return {
+      className:"awaiting",
+      text:"AWAITING UPDATE"
+    };
+
+  }
+
+
+  const status =
+    metric.Status || "Current";
+
+
+  return {
+    className:normalizeStatus(status),
+    text:String(status).toUpperCase()
+  };
+
+}
+
+
+function parseNumber(value) {
+
+  if (
+    value === undefined ||
+    value === null ||
+    value === ""
+  ) {
+    return null;
+  }
+
+
+  if (
+    typeof value === "number"
+  ) {
+    return value;
+  }
+
+
+  const cleaned =
+    String(value)
+      .replace(/[$,%]/g,"")
+      .replace(/,/g,"")
+      .trim();
+
+
+  const n =
+    Number(cleaned);
+
+
+  return Number.isFinite(n)
+    ? n
+    : null;
+
+}
+
+
+
+function metricDisplayName(metric) {
+
+  if (!metric) return "";
+
+  const key = metric["Metric Key"];
+
+  if (key === "cash_collected_week") {
+    return "Cash Collected Last Week";
+  }
+
+  return metric.Metric || "";
+}
+
+
+/* ================================
+   CURRENT METRIC CARDS
+================================ */
+
+function metricCard(metric) {
+
+  if (!metric) {
+    return "";
+  }
+
+
+  const status =
+    statusLabel(metric);
+
+
+  const value =
+    hasValue(metric)
+
+      ? escapeHtml(metric.Value)
+
+      : `
+          <span class="awaiting-value">
+            ◷ Awaiting update
+          </span>
+        `;
+
+
+  return `
+
+    <div class="card">
+
+      <div class="card-head">
+
+        <div>
+
+          <div class="metric-name">
+            ${escapeHtml(metricDisplayName(metric))}
+          </div>
+
+          <div class="metric-value">
+            ${value}
+          </div>
+
+        </div>
+
+
+        <span class="pill ${status.className}">
+          ${status.text}
+        </span>
+
+      </div>
+
+
+      ${
+        metric.Goal
+
+          ? `
+            <div class="metric-detail">
+              Goal: ${escapeHtml(metric.Goal)}
+            </div>
+          `
+
+          : ""
+      }
+
+
+      ${
+        metric.Previous
+
+          ? `
+            <div class="metric-detail">
+              Previous: ${escapeHtml(metric.Previous)}
+            </div>
+          `
+
+          : ""
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* ================================
+   HOME SUMMARY
+================================ */
+
+function summaryCard(
+  title,
+  metric,
+  view,
+  footer
+) {
+
+  if (!metric) {
+
+    return `
+
+      <div
+        class="card summary-card"
+        onclick="showView('${view}')">
+
+        <div class="metric-name">
+          ${escapeHtml(title)}
+        </div>
+
+        <span class="awaiting-value">
+          ◷ Awaiting update
+        </span>
+
+
+        <div class="summary-footer">
+
+          <span>
+            ${escapeHtml(footer || "")}
+          </span>
+
+          <span class="summary-link">
+            View →
+          </span>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  const status =
+    statusLabel(metric);
+
+
+  const value =
+    hasValue(metric)
+
+      ? escapeHtml(metric.Value)
+
+      : `
+          <span class="awaiting-value">
+            ◷ Awaiting update
+          </span>
+        `;
+
+
+  return `
+
+    <div
+      class="card summary-card"
+      onclick="showView('${view}')">
+
+      <div class="card-head">
+
+        <div>
+
+          <div class="metric-name">
+            ${escapeHtml(title)}
+          </div>
+
+          <div class="metric-value">
+            ${value}
+          </div>
+
+        </div>
+
+
+        <span class="pill ${status.className}">
+          ${status.text}
+        </span>
+
+      </div>
+
+
+      ${
+        metric.Goal
+
+          ? `
+            <div class="metric-detail">
+              Goal: ${escapeHtml(metric.Goal)}
+            </div>
+          `
+
+          : ""
+      }
+
+
+      ${
+        metric.Previous
+
+          ? `
+            <div class="metric-detail">
+              Previous: ${escapeHtml(metric.Previous)}
+            </div>
+          `
+
+          : ""
+      }
+
+
+      <div class="summary-footer">
+
+        <span>
+          ${escapeHtml(footer || "")}
+        </span>
+
+        <span class="summary-link">
+          View →
+        </span>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ================================
+   TEAM RECAP
+================================ */
+
+function getFirstUseful(text) {
+
+  if (!text) {
+    return "";
+  }
+
+
+  const clean =
+    String(text).trim();
+
+
+  const firstSentence =
+    clean.split(/[.;]\s/)[0];
+
+
+  if (
+    firstSentence.length > 145
+  ) {
+
+    return (
+      firstSentence.substring(0,142) +
+      "..."
+    );
+
+  }
+
+
+  return firstSentence;
+
+}
+
+
+function recapRow(
+  label,
+  text
+) {
+
+  if (!text) {
+    return "";
+  }
+
+
+  return `
+
+    <div class="recap-row">
+
+      <div class="recap-label">
+        ${escapeHtml(label)}
+      </div>
+
+      <div class="recap-text">
+        ${escapeHtml(text)}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function recapCard(
+  recap,
+  index
+) {
+
+  if (!recap) {
+    return "";
+  }
+
+
+  const keyResult =
+    getFirstUseful(
+      recap["Key Numbers"] ||
+      recap["Wins / Progress"]
+    );
+
+
+  const watch =
+    getFirstUseful(
+      recap["Missed / At Risk"]
+    );
+
+
+  const needsJon =
+    recap["Needs Jon"] || "";
+
+
+  const hasNeedsJon =
+    String(needsJon).trim() !== "";
+
+
+  return `
+
+    <div
+      class="card recap-card"
+      id="recap-${index}">
+
+      <div
+        class="recap-summary"
+        onclick="toggleRecap(${index})">
+
+        <div class="card-head">
+
+          <div>
+
+            <h3 class="recap-name">
+              ${escapeHtml(recap.Person)}
+            </h3>
+
+            <div class="recap-area">
+              ${escapeHtml(recap.Area)}
+            </div>
+
+          </div>
+
+
+          <span
+            class="pill ${
+              normalizeStatus(
+                recap["Update Status"] ||
+                "updated"
+              )
+            }">
+
+            ${escapeHtml(
+              recap["Update Status"] ||
+              "UPDATED"
+            )}
+
+          </span>
+
+        </div>
+
+
+        ${
+          keyResult
+
+            ? `
+
+              <div class="recap-key">
+
+                <div class="recap-label">
+                  Key Result
+                </div>
+
+                <div class="recap-text">
+                  ${escapeHtml(keyResult)}
+                </div>
+
+              </div>
+
+            `
+
+            : ""
+        }
+
+
+        ${
+          watch
+
+            ? `
+
+              <div class="recap-watch">
+
+                <div class="recap-label">
+                  Watch
+                </div>
+
+                <div class="recap-text">
+                  ${escapeHtml(watch)}
+                </div>
+
+              </div>
+
+            `
+
+            : ""
+        }
+
+
+        ${
+          hasNeedsJon
+
+            ? `
+
+              <div class="needs-jon-preview">
+
+                <div class="recap-label">
+                  Needs Jon
+                </div>
+
+                <div class="recap-text">
+                  ${escapeHtml(needsJon)}
+                </div>
+
+              </div>
+
+            `
+
+            : ""
+        }
+
+
+        <div class="expand-row">
+
+          <span class="expand-text">
+            More details
+          </span>
+
+          <span class="expand-arrow">
+            ↓
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="recap-full">
+
+        ${recapRow(
+          "Wins / Progress",
+          recap["Wins / Progress"]
+        )}
+
+        ${recapRow(
+          "Key Numbers",
+          recap["Key Numbers"]
+        )}
+
+        ${recapRow(
+          "Missed / At Risk",
+          recap["Missed / At Risk"]
+        )}
+
+        ${recapRow(
+          "Planned / Next Steps",
+          recap["This Week"]
+        )}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function toggleRecap(index) {
+
+  const card =
+    document.getElementById(
+      "recap-" + index
+    );
+
+
+  if (!card) {
+    return;
+  }
+
+
+  card.classList.toggle("open");
+
+
+  const text =
+    card.querySelector(
+      ".expand-text"
+    );
+
+
+  if (text) {
+
+    text.textContent =
+      card.classList.contains("open")
+        ? "Hide details"
+        : "More details";
+
+  }
+
+}
+
+
+/* ================================
+   HISTORY HELPERS
+================================ */
+
+function historyByKey(key) {
+
+  return DATA.history
+
+    .filter(
+      row =>
+        row["Metric Key"] === key
+    )
+
+    .map(row => {
+
+      return {
+        date:row["Week Of"],
+        value:parseNumber(row.Value),
+        label:row.Metric
+      };
+
+    })
+
+    .filter(
+      row =>
+        row.value !== null
+    )
+
+    .sort(
+      (a,b) =>
+        new Date(a.date) -
+        new Date(b.date)
+    );
+
+}
+
+
+function lastEight(series) {
+
+  if (series.length <= 8) {
+    return series;
+  }
+
+  return series.slice(
+    series.length - 8
+  );
+
+}
+
+
+function formatShortDate(dateString) {
+
+  if (!dateString) {
+    return "";
+  }
+
+
+  const date =
+    new Date(
+      dateString + "T12:00:00"
+    );
+
+
+  return (
+    (date.getMonth() + 1) +
+    "/" +
+    date.getDate()
+  );
+
+}
+
+
+function percentChange(
+  first,
+  last
+) {
+
+  if (
+    first === null ||
+    last === null ||
+    first === 0
+  ) {
+    return null;
+  }
+
+
+  return (
+    ((last - first) / first) * 100
+  );
+
+}
+
+
+function trendText(series) {
+
+  if (series.length < 2) {
+    return "";
+  }
+
+
+  const first =
+    series[0].value;
+
+
+  const last =
+    series[
+      series.length - 1
+    ].value;
+
+
+  const change =
+    percentChange(
+      first,
+      last
+    );
+
+
+  if (change === null) {
+
+    return `
+      ${last >= first ? "↑" : "↓"}
+      ${Math.abs(last - first)}
+      vs first week
+    `;
+
+  }
+
+
+  const arrow =
+    change >= 0
+      ? "↑"
+      : "↓";
+
+
+  return `
+    ${arrow}
+    ${Math.abs(change).toFixed(0)}%
+    vs first week
+  `;
+
+}
+
+
+/* ================================
+   SVG LINE CHART
+================================ */
+
+function lineChartSvg(
+  series,
+  strokeColor="#C55A5A"
+) {
+
+  if (
+    !series ||
+    series.length === 0
+  ) {
+
+    return `
+      <div class="history-empty">
+        No historical data available yet.
+      </div>
+    `;
+
+  }
+
+
+  const width = 460;
+  const height = 170;
+
+  const padX = 18;
+  const padTop = 18;
+  const padBottom = 24;
+
+
+  const values =
+    series.map(d => d.value);
+
+
+  let min =
+    Math.min(...values);
+
+  let max =
+    Math.max(...values);
+
+
+  if (min === max) {
+    min = min - 1;
+    max = max + 1;
+  }
+
+
+  const usableW =
+    width - padX * 2;
+
+  const usableH =
+    height -
+    padTop -
+    padBottom;
+
+
+  const points =
+    series.map(
+      (d,index) => {
+
+        const x =
+          padX +
+          (
+            series.length === 1
+              ? usableW / 2
+              : index *
+                usableW /
+                (series.length - 1)
+          );
+
+
+        const y =
+          padTop +
+          (
+            (max - d.value) /
+            (max - min)
+          ) *
+          usableH;
+
+
+        return {
+          x,
+          y,
+          value:d.value,
+          date:d.date
+        };
+
+      }
+    );
+
+
+  const polyline =
+    points
+      .map(
+        p =>
+          `${p.x},${p.y}`
+      )
+      .join(" ");
+
+
+  const circles =
+    points
+      .map(
+        p => `
+
+          <circle
+            cx="${p.x}"
+            cy="${p.y}"
+            r="3.5"
+            fill="${strokeColor}">
+          </circle>
+
+        `
+      )
+      .join("");
+
+
+  const grid = [0,1,2,3]
+    .map(i => {
+
+      const y =
+        padTop +
+        (usableH / 3) * i;
+
+
+      return `
+
+        <line
+          x1="${padX}"
+          y1="${y}"
+          x2="${width-padX}"
+          y2="${y}"
+          stroke="#2B3444"
+          stroke-width="1">
+        </line>
+
+      `;
+
+    })
+    .join("");
+
+
+  return `
+
+    <div class="chart-wrap">
+
+      <svg
+        class="chart-svg"
+        viewBox="0 0 ${width} ${height}"
+        role="img">
+
+        ${grid}
+
+
+        <polyline
+          points="${polyline}"
+          fill="none"
+          stroke="${strokeColor}"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+        </polyline>
+
+
+        ${circles}
+
+      </svg>
+
+    </div>
+
+
+    <div class="chart-axis">
+
+      <span>
+        ${
+          formatShortDate(
+            series[0].date
+          )
+        }
+      </span>
+
+      <span>
+        ${
+          formatShortDate(
+            series[
+              series.length - 1
+            ].date
+          )
+        }
+      </span>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ================================
+   MEMBERSHIP DUAL-LINE CHART
+================================ */
+
+function dualLineChartSvg(
+  seriesA,
+  seriesB
+) {
+
+  const allDates =
+    Array.from(
+      new Set(
+        [
+          ...seriesA.map(x => x.date),
+          ...seriesB.map(x => x.date)
+        ]
+      )
+    )
+    .sort(
+      (a,b) =>
+        new Date(a) -
+        new Date(b)
+    )
+    .slice(-8);
+
+
+  if (allDates.length === 0) {
+
+    return `
+      <div class="history-empty">
+        No historical data available yet.
+      </div>
+    `;
+
+  }
+
+
+  const mapA =
+    Object.fromEntries(
+      seriesA.map(
+        d => [d.date,d.value]
+      )
+    );
+
+
+  const mapB =
+    Object.fromEntries(
+      seriesB.map(
+        d => [d.date,d.value]
+      )
+    );
+
+
+  const dataA =
+    allDates.map(
+      date => ({
+        date,
+        value:
+          mapA[date] !== undefined
+            ? mapA[date]
+            : 0
+      })
+    );
+
+
+  const dataB =
+    allDates.map(
+      date => ({
+        date,
+        value:
+          mapB[date] !== undefined
+            ? mapB[date]
+            : 0
+      })
+    );
+
+
+  const width = 460;
+  const height = 175;
+
+  const padX = 18;
+  const padTop = 18;
+  const padBottom = 25;
+
+
+  const allValues = [
+    ...dataA.map(d=>d.value),
+    ...dataB.map(d=>d.value)
+  ];
+
+
+  let min = 0;
+
+  let max =
+    Math.max(...allValues);
+
+
+  if (max === 0) {
+    max = 1;
+  }
+
+
+  const usableW =
+    width - padX * 2;
+
+  const usableH =
+    height -
+    padTop -
+    padBottom;
+
+
+  function makePoints(series) {
+
+    return series.map(
+      (d,index) => {
+
+        const x =
+          padX +
+          (
+            series.length === 1
+              ? usableW/2
+              : index *
+                usableW /
+                (series.length - 1)
+          );
+
+
+        const y =
+          padTop +
+          (
+            (max - d.value) /
+            (max - min)
+          ) *
+          usableH;
+
+
+        return {
+          x,
+          y,
+          value:d.value,
+          date:d.date
+        };
+
+      }
+    );
+
+  }
+
+
+  const pointsA =
+    makePoints(dataA);
+
+  const pointsB =
+    makePoints(dataB);
+
+
+  const polyA =
+    pointsA
+      .map(
+        p => `${p.x},${p.y}`
+      )
+      .join(" ");
+
+
+  const polyB =
+    pointsB
+      .map(
+        p => `${p.x},${p.y}`
+      )
+      .join(" ");
+
+
+  const circlesA =
+    pointsA
+      .map(
+        p => `
+
+          <circle
+            cx="${p.x}"
+            cy="${p.y}"
+            r="3.2"
+            fill="#C55A5A">
+          </circle>
+
+        `
+      )
+      .join("");
+
+
+  const circlesB =
+    pointsB
+      .map(
+        p => `
+
+          <circle
+            cx="${p.x}"
+            cy="${p.y}"
+            r="3.2"
+            fill="#4C82A8">
+          </circle>
+
+        `
+      )
+      .join("");
+
+
+  const grid = [0,1,2,3]
+    .map(i => {
+
+      const y =
+        padTop +
+        (usableH / 3) * i;
+
+
+      return `
+
+        <line
+          x1="${padX}"
+          y1="${y}"
+          x2="${width-padX}"
+          y2="${y}"
+          stroke="#2B3444"
+          stroke-width="1">
+        </line>
+
+      `;
+
+    })
+    .join("");
+
+
+  return `
+
+    <div class="chart-wrap">
+
+      <svg
+        class="chart-svg"
+        viewBox="0 0 ${width} ${height}">
+
+        ${grid}
+
+
+        <polyline
+          points="${polyA}"
+          fill="none"
+          stroke="#C55A5A"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+        </polyline>
+
+
+        <polyline
+          points="${polyB}"
+          fill="none"
+          stroke="#4C82A8"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+        </polyline>
+
+
+        ${circlesA}
+
+        ${circlesB}
+
+      </svg>
+
+    </div>
+
+
+    <div class="chart-axis">
+
+      <span>
+        ${formatShortDate(allDates[0])}
+      </span>
+
+      <span>
+        ${
+          formatShortDate(
+            allDates[
+              allDates.length - 1
+            ]
+          )
+        }
+      </span>
+
+    </div>
+
+
+    <div class="legend">
+
+      <div class="legend-item">
+
+        <span
+          class="legend-dot legend-red">
+        </span>
+
+        New Members
+
+      </div>
+
+
+      <div class="legend-item">
+
+        <span
+          class="legend-dot legend-blue">
+        </span>
+
+        Churn
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ================================
+   HOME
+================================ */
+
+function renderHome() {
+
+  const activeMembers =
+    findMetric(
+      "active_members"
+    );
+
+
+  const revenueMTD =
+    findMetric(
+      "revenue_mtd"
+    );
+
+
+  const teamMetrics =
+    bySection("TEAM");
+
+
+  const teamAvailable =
+    teamMetrics.filter(
+      hasValue
+    ).length;
+
+
+  const teamTotal =
+    teamMetrics.length;
+
+
+  const attention =
+    findMetric(
+      "needs_jon_count"
+    );
+
+
+  const attentionCount =
+    hasValue(attention)
+      ? attention.Value
+      : "0";
+
+
+  const teamStatusClass =
+    teamAvailable < teamTotal
+      ? "partial"
+      : "current";
+
+
+  const teamStatusText =
+    teamAvailable < teamTotal
+      ? "PARTIAL"
+      : "CURRENT";
+
+
+  document
+    .getElementById("home")
+    .innerHTML = `
+
+      <h1>
+        Monday Pulse
+      </h1>
+
+
+      <p class="intro">
+
+        Results from the last closed week across
+        membership, financials
+        and team execution.
+
+      </p>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Membership
+        </div>
+
+        ${summaryCard(
+          "Active Paying Members",
+          activeMembers,
+          "membership",
+          "Membership health"
+        )}
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Financial
+        </div>
+
+        ${summaryCard(
+          "Revenue MTD",
+          revenueMTD,
+          "financial",
+          "Revenue & cash"
+        )}
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Team
+        </div>
+
+
+        <div
+          class="card summary-card"
+          onclick="showView('team')">
+
+          <div class="card-head">
+
+            <div>
+
+              <div class="metric-name">
+                Weekly Execution
+              </div>
+
+              <div class="metric-value">
+
+                ${
+                  teamTotal > 0
+
+                    ? teamAvailable +
+                      " / " +
+                      teamTotal
+
+                    : "—"
+                }
+
+              </div>
+
+            </div>
+
+
+            <span
+              class="pill ${teamStatusClass}">
+
+              ${teamStatusText}
+
+            </span>
+
+          </div>
+
+
+          <div class="metric-detail">
+
+            ${
+              teamTotal > 0
+
+                ? teamAvailable +
+                  " of " +
+                  teamTotal +
+                  " scorecard metrics updated"
+
+                : "Awaiting team scorecard"
+            }
+
+          </div>
+
+
+          ${
+            teamAvailable < teamTotal &&
+            teamTotal > 0
+
+              ? `
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-bar"
+                    style="width:${
+                      (
+                        teamAvailable /
+                        teamTotal
+                      ) * 100
+                    }%">
+                  </div>
+
+                </div>
+
+              `
+
+              : ""
+          }
+
+
+          <div class="summary-footer">
+
+            <span>
+              Scorecard + weekly recaps
+            </span>
+
+            <span class="summary-link">
+              View →
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Needs Your Attention
+        </div>
+
+
+        <div
+          class="card attention-card"
+          onclick="goToAttention()">
+
+          <div class="attention-number">
+            ${escapeHtml(attentionCount)}
+          </div>
+
+          <div class="attention-copy">
+
+            ${
+              Number(attentionCount) === 1
+
+                ? "item needs your attention"
+
+                : "items need your attention"
+            }
+
+          </div>
+
+
+          <div class="metric-detail">
+
+            Decisions, blockers
+            and questions surfaced
+            from weekly recaps.
+
+          </div>
+
+
+          <div class="attention-action">
+
+            <span>
+              Review decisions
+            </span>
+
+            <span>
+              View →
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="last-refreshed">
+        Refreshed when this page opened
+      </div>
+
+    `;
+
+}
+
+
+/* ================================
+   MEMBERSHIP
+================================ */
+
+function renderMembership() {
+
+  const metrics =
+    bySection(
+      "MEMBERSHIP"
+    );
+
+
+  document
+    .getElementById(
+      "membership"
+    )
+    .innerHTML = `
+
+      <h1>
+        Membership
+      </h1>
+
+
+      <p class="intro">
+
+        Membership health, movement and growth
+        for the last closed week.
+
+      </p>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Week Results
+        </div>
+
+
+        ${
+          metrics.length
+
+            ? metrics
+                .map(metricCard)
+                .join("")
+
+            : `
+
+              <div class="card">
+
+                <span class="awaiting-value">
+                  ◷ Awaiting membership update
+                </span>
+
+              </div>
+
+            `
+        }
+
+      </div>
+
+    `;
+
+}
+
+
+/* ================================
+   FINANCIAL
+================================ */
+
+function renderFinancial() {
+
+  const metrics =
+    bySection(
+      "FINANCIAL"
+    );
+
+
+  document
+    .getElementById(
+      "financial"
+    )
+    .innerHTML = `
+
+      <h1>
+        Financial
+      </h1>
+
+
+      <p class="intro">
+
+        Revenue, cash and pace against goals
+        through the last closed week.
+
+      </p>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Week Results
+        </div>
+
+
+        ${
+          metrics.length
+
+            ? metrics
+                .map(metricCard)
+                .join("")
+
+            : `
+
+              <div class="card">
+
+                <span class="awaiting-value">
+                  ◷ Awaiting financial update
+                </span>
+
+              </div>
+
+            `
+        }
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Profitability
+        </div>
+
+
+        <div class="card history-empty">
+
+          <strong>
+            Revenue vs Expenses
+          </strong>
+
+          Expense data is not available
+          in the current scorecard yet.
+
+          Once added to the data sheet,
+          this section can show
+          Expenses MTD, Net and Margin.
+
+        </div>
+
+      </div>
+
+    `;
+
+}
+
+
+/* ================================
+   TEAM
+================================ */
+
+function renderTeam() {
+
+  const metrics =
+    bySection(
+      "TEAM"
+    );
+
+
+  const scorecardHtml =
+    metrics.length
+
+      ? metrics
+          .map(metricCard)
+          .join("")
+
+      : `
+
+        <div class="card">
+
+          <span class="awaiting-value">
+
+            ◷ Team scorecard has not
+            been updated yet
+
+          </span>
+
+        </div>
+
+      `;
+
+
+  const recapsHtml =
+    DATA.team.length
+
+      ? DATA.team
+          .map(
+            (recap,index) =>
+              recapCard(
+                recap,
+                index
+              )
+          )
+          .join("")
+
+      : `
+
+        <div class="card">
+
+          <span class="awaiting-value">
+
+            ◷ No weekly recaps
+            available yet
+
+          </span>
+
+        </div>
+
+      `;
+
+
+  const decisions =
+    DATA.team.filter(
+      recap =>
+        recap["Needs Jon"] &&
+        String(
+          recap["Needs Jon"]
+        ).trim() !== ""
+    );
+
+
+  const decisionsHtml =
+    decisions.length
+
+      ? decisions
+          .map(
+            recap => `
+
+              <div class="needs-jon-preview">
+
+                <div class="recap-label">
+                  ${escapeHtml(recap.Person)}
+                </div>
+
+                <div class="recap-text">
+                  ${escapeHtml(
+                    recap["Needs Jon"]
+                  )}
+                </div>
+
+              </div>
+
+            `
+          )
+          .join("")
+
+      : `
+
+        <div class="metric-detail">
+
+          No decisions currently
+          waiting for Jon.
+
+        </div>
+
+      `;
+
+
+  document
+    .getElementById(
+      "team"
+    )
+    .innerHTML = `
+
+      <h1>
+        Team
+      </h1>
+
+
+      <p class="intro">
+
+        Execution from the last closed week.
+        Direct-report context underneath.
+
+      </p>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Team Scorecard
+        </div>
+
+        ${scorecardHtml}
+
+      </div>
+
+
+      <div
+        class="section decision-anchor"
+        id="jonAttention">
+
+        <div class="section-title">
+          Needs Jon
+        </div>
+
+
+        <div class="decision-header">
+
+          <strong>
+            Decisions & Blockers
+          </strong>
+
+          <span>
+            Only items that need
+            Jon's input.
+          </span>
+
+        </div>
+
+
+        ${decisionsHtml}
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Last Week Recaps
+        </div>
+
+        ${recapsHtml}
+
+      </div>
+
+    `;
+
+}
+
+
+/* ================================
+   HISTORY
+================================ */
+
+function renderHistory() {
+
+  const newMembers =
+    lastEight(
+      historyByKey(
+        "new_members"
+      )
+    );
+
+
+  const churn =
+    lastEight(
+      historyByKey(
+        "churn"
+      )
+    );
+
+
+  const podcast =
+    lastEight(
+      historyByKey(
+        "podcast_downloads"
+      )
+    );
+
+
+  const subscribers =
+    lastEight(
+      historyByKey(
+        "new_email_subscribers"
+      )
+    );
+
+
+  const latestPodcast =
+    podcast.length
+
+      ? podcast[
+          podcast.length - 1
+        ].value
+
+      : null;
+
+
+  const latestSubscribers =
+    subscribers.length
+
+      ? subscribers[
+          subscribers.length - 1
+        ].value
+
+      : null;
+
+
+  const podcastTrend =
+    trendText(podcast);
+
+
+  const subscriberTrend =
+    trendText(subscribers);
+
+
+  const podcastTrendClass =
+    podcast.length >= 2 &&
+    podcast[
+      podcast.length - 1
+    ].value >= podcast[0].value
+
+      ? "trend-up"
+
+      : "trend-down";
+
+
+  const subscriberTrendClass =
+    subscribers.length >= 2 &&
+    subscribers[
+      subscribers.length - 1
+    ].value >= subscribers[0].value
+
+      ? "trend-up"
+
+      : "trend-down";
+
+
+  document
+    .getElementById(
+      "history"
+    )
+    .innerHTML = `
+
+      <h1>
+        History
+      </h1>
+
+
+      <p class="intro">
+
+        Fast trend view across
+        the business.
+
+        Historical charts use
+        the HISTORY tab in the
+        CEO Pulse data sheet.
+
+      </p>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Membership
+        </div>
+
+
+        <div class="card chart-card">
+
+          <div class="chart-top">
+
+            <div>
+
+              <div class="chart-title">
+                Membership Movement
+              </div>
+
+              <div class="trend-copy">
+                New Members vs Churn
+              </div>
+
+            </div>
+
+            <span class="pill current">
+              8 WEEKS
+            </span>
+
+          </div>
+
+
+          ${dualLineChartSvg(
+            newMembers,
+            churn
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Audience / Growth
+        </div>
+
+
+        <div class="card chart-card">
+
+          <div class="chart-top">
+
+            <div>
+
+              <div class="chart-title">
+                Podcast Downloads
+              </div>
+
+
+              <div class="chart-current">
+
+                ${
+                  latestPodcast !== null
+                    ? latestPodcast
+                        .toLocaleString()
+                    : "—"
+                }
+
+              </div>
+
+
+              ${
+                podcastTrend
+
+                  ? `
+
+                    <div
+                      class="trend-copy ${podcastTrendClass}">
+
+                      ${podcastTrend}
+
+                    </div>
+
+                  `
+
+                  : ""
+              }
+
+            </div>
+
+
+            <span class="pill current">
+              8 WEEKS
+            </span>
+
+          </div>
+
+
+          ${lineChartSvg(
+            podcast,
+            "#C55A5A"
+          )}
+
+        </div>
+
+
+        <div class="card chart-card">
+
+          <div class="chart-top">
+
+            <div>
+
+              <div class="chart-title">
+                New Email Subscribers
+              </div>
+
+
+              <div class="chart-current">
+
+                ${
+                  latestSubscribers !== null
+                    ? latestSubscribers
+                        .toLocaleString()
+                    : "—"
+                }
+
+              </div>
+
+
+              ${
+                subscriberTrend
+
+                  ? `
+
+                    <div
+                      class="trend-copy ${subscriberTrendClass}">
+
+                      ${subscriberTrend}
+
+                    </div>
+
+                  `
+
+                  : ""
+              }
+
+            </div>
+
+
+            <span class="pill current">
+              8 WEEKS
+            </span>
+
+          </div>
+
+
+          ${lineChartSvg(
+            subscribers,
+            "#4C82A8"
+          )}
+
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-title">
+          Financial
+        </div>
+
+
+        <div class="card history-empty">
+
+          <strong>
+            Revenue vs Expenses
+          </strong>
+
+          Historical expense data
+          is not available yet.
+
+          This chart is reserved
+          for Revenue vs Expenses
+          once the financial source
+          is added.
+
+        </div>
+
+      </div>
+
+    `;
+
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+function showView(view) {
+
+  [
+    "loading",
+    "home",
+    "membership",
+    "financial",
+    "team",
+    "history"
+  ]
+  .forEach(id => {
+
+    const el =
+      document.getElementById(id);
+
+
+    if (el) {
+      el.classList.add(
+        "hidden"
+      );
+    }
+
+  });
+
+
+  const selected =
+    document.getElementById(view);
+
+
+  if (selected) {
+
+    selected.classList.remove(
+      "hidden"
+    );
+
+  }
+
+
+  document
+    .querySelectorAll(
+      ".nav-button"
+    )
+    .forEach(button => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.view === view
+      );
+
+    });
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function goToAttention() {
+
+  showView("team");
+
+
+  setTimeout(() => {
+
+    const target =
+      document.getElementById(
+        "jonAttention"
+      );
+
+
+    if (target) {
+
+      target.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    }
+
+  },120);
+
+}
+
+
+document
+  .querySelectorAll(
+    ".nav-button"
+  )
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        showView(
+          button.dataset.view
+        );
+
+      }
+    );
+
+  });
+
+
+/* ================================
+   RENDER APP
+================================ */
+
+function renderApp() {
+
+  const week =
+    findMetric(
+      "week_of"
+    );
+
+
+  document
+    .getElementById(
+      "headerDate"
+    )
+    .innerHTML = `
+
+      CEO PULSE
+
+      ${
+        week &&
+        hasValue(week)
+
+          ? "<br>WEEK ENDING " +
+            escapeHtml(
+              week.Value
+            )
+
+          : ""
+      }
+
+    `;
+
+
+  renderHome();
+
+  renderMembership();
+
+  renderFinancial();
+
+  renderTeam();
+
+  renderHistory();
+
+
+  showView("home");
+
+}
+
+
+/* ================================
+   LOAD DATA
+================================ */
+
+const API_URL = "https://script.google.com/macros/s/AKfycbwAJntZLIYNoTWwHU5-qy40NmnNa2tbap2gl4ZXlLO-O-dpaKMMnInsdQp3XuJ9xiXjIg/exec";
+
+function handlePulseData(data) {
+  DATA = data || { current:[], team:[], history:[] };
+  renderApp();
+}
+
+function handlePulseError() {
+  const loading = document.getElementById("loading");
+  if (loading) loading.innerHTML = `<div class="error"><strong>Could not load CEO Pulse.</strong><br><br>Please refresh and try again.</div>`;
+}
+
+function loadPulseData() {
+  const old = document.getElementById("pulse-api-script");
+  if (old) old.remove();
+  const script = document.createElement("script");
+  script.id = "pulse-api-script";
+  script.src = API_URL + "?api=pulse&callback=handlePulseData&_=" + Date.now();
+  script.onerror = handlePulseError;
+  document.body.appendChild(script);
+}
+
+loadPulseData();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js"));
+}
+
+</script>
+
+</body>
+</html>
